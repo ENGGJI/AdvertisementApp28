@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/design2"
+    tools:context=".DetailsFragment">
+
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="202dp"
+        android:layout_height="161dp"
+        android:layout_marginTop="46dp"
+        android:src="@android:drawable/btn_star_big_on"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="258dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/itemName"
+                android:layout_width="match_parent"
+                android:layout_height="21dp"
+                android:layout_marginTop="20dp"
+                android:text="Item name"
+                android:textColor="#040303"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Price"
+                android:textColor="#090808"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/userContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Contact"
+                android:textColor="#090808"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/postedByUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Posted by"
+                android:textColor="#070707"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itemDescription"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="16dp"
+                android:text="Description"
+                android:textColor="#090909"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/messageTv"
+        android:layout_width="121dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="24dp"
+        android:text="Click here to subscribe to user for future updates"
+        android:textColor="#090808"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/scrollView4" />
+
+    <ImageView
+        android:id="@+id/subscribeB"
+        android:layout_width="46dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="50dp"
+        android:src="@drawable/ic_action_name"
+        app:layout_constraintStart_toEndOf="@+id/messageTv"
+        app:layout_constraintTop_toTopOf="@+id/messageTv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

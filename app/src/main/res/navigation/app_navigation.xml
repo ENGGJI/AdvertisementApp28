@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/authenticationFragment">
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.project.advertisementapp.AuthenticationFragment"
+        android:label="fragment_authentication"
+        tools:layout="@layout/fragment_authentication" >
+        <action
+            android:id="@+id/action_authenticationFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_authenticationFragment_to_registrationFragment2"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_authenticationFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_authenticationFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.project.advertisementapp.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_authenticationFragment2"
+            app:destination="@id/authenticationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.project.advertisementapp.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addPostFragment"
+            app:destination="@id/addPostFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_myAddsFragment"
+            app:destination="@id/myAddsFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_accountsFragment"
+            app:destination="@id/accountsFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPostFragment"
+        android:name="com.project.advertisementapp.AddPostFragment"
+        android:label="fragment_add_post"
+        tools:layout="@layout/fragment_add_post" >
+        <action
+            android:id="@+id/action_addPostFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myAddsFragment"
+        android:name="com.project.advertisementapp.MyAddsFragment"
+        android:label="fragment_my_adds"
+        tools:layout="@layout/fragment_my_adds" >
+        <action
+            android:id="@+id/action_myAddsFragment_to_updateItemFragment"
+            app:destination="@id/updateItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountsFragment"
+        android:name="com.project.advertisementapp.AccountsFragment"
+        android:label="fragment_accounts"
+        tools:layout="@layout/fragment_accounts" >
+        <action
+            android:id="@+id/action_accountsFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
+        <action
+            android:id="@+id/action_accountsFragment_to_subscriberFragment"
+            app:destination="@id/subscriberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.project.advertisementapp.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateItemFragment"
+        android:name="com.project.advertisementapp.UpdateItemFragment"
+        android:label="fragment_update_item"
+        tools:layout="@layout/fragment_update_item" >
+        <action
+            android:id="@+id/action_updateItemFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.project.advertisementapp.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminFragment_to_adminDescriptionFragment"
+            app:destination="@id/adminDescriptionFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminDescriptionFragment"
+        android:name="com.project.advertisementapp.AdminDescriptionFragment"
+        android:label="AdminDescriptionFragment" >
+        <action
+            android:id="@+id/action_adminDescriptionFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subscriberFragment"
+        android:name="com.project.advertisementapp.SubscriberFragment"
+        android:label="fragment_subscriber"
+        tools:layout="@layout/fragment_subscriber" >
+        <action
+            android:id="@+id/action_subscriberFragment_to_accountsFragment"
+            app:destination="@id/accountsFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/splashScreen"
+        android:name="com.project.advertisementapp.SplashScreen"
+        android:label="activity_splash_screen"
+        tools:layout="@layout/activity_splash_screen" />
+</navigation>

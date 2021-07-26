@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "236238743908",
+    "firebase_url": "https://advertisementapp-2b986-default-rtdb.firebaseio.com",
+    "project_id": "advertisementapp-2b986",
+    "storage_bucket": "advertisementapp-2b986.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236238743908:android:69919990d8d1636616f271",
+        "android_client_info": {
+          "package_name": "com.capgemini.advertisementapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236238743908-dten47i0r3tkhhpdhqh0e50lsqt9n136.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6xxy5IgKP6JVHSSXb8lb4E4wR6Oqkc0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236238743908-dten47i0r3tkhhpdhqh0e50lsqt9n136.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
