@@ -141,16 +141,6 @@ class DetailsFragment : Fragment() {
                         }
                     })
 
-                    // creating text log data for subscribers notification
-//
-//                    for (subbedUser in userSubbedList) {
-//                        val subscriberMessage = db.getReference("SubscriberMessageLog").child(subbedUser)
-//                        for(i in 0..subCount){
-//                            val subscriberMessageLog= SubscriberMessageLog("New post is available from one of your subscribers",subbedUser)
-//                            subscriberMessage.child((i+1).toString()).setValue(subscriberMessageLog)
-//                        }
-//                    }
-
                     Toast.makeText(context,"User has been Subscribed",Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_detailsFragment_to_listFragment)
                 }

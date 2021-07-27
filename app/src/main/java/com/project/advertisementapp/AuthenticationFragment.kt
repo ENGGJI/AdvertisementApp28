@@ -24,10 +24,6 @@ class AuthenticationFragment : Fragment() {
     lateinit var passwordEditText: EditText
     lateinit var loginbutton: Button
 
-    // notification
-//    private val CHANNEL_ID ="channel_id_example_01"
-//    private val notificationId = 101
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -108,7 +104,4 @@ class AuthenticationFragment : Fragment() {
         }
     }
 
-//    private fun createNotificationChannel(){
-//        if(Build.VERS)
-//    }
 }

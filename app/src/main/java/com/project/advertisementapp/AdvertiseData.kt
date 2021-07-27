@@ -26,8 +26,3 @@ data class ItemPosted(
 data class SubscriberData(
     var subscriberID: String =""
 )
-
-data class SubscriberMessageLog(
-    var message: String ="",
-    var forUserId: String =""
-)
