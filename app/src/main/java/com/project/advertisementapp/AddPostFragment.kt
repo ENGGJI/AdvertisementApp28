@@ -1,8 +1,12 @@
 package com.project.advertisementapp
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,13 +14,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -29,7 +32,6 @@ class AddPostFragment : Fragment() {
 
     lateinit var button: Button
     lateinit var image: ImageView
-
 
     //item info
     lateinit var itemNameEditText: EditText
@@ -46,6 +48,9 @@ class AddPostFragment : Fragment() {
     //subscriber default count
     var subCount = 0
 
+    // notification variable
+    private val NOTIFICATION_CHANNEL_ID = "channel_id_01"
+    private val notificationId = 101
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +90,8 @@ class AddPostFragment : Fragment() {
 
         image = view.findViewById(R.id.ivPhoto)
 
+        createNotificationChannel()
+
         button.setOnClickListener{
 
             Intent(Intent.ACTION_GET_CONTENT).also{
@@ -96,6 +103,7 @@ class AddPostFragment : Fragment() {
                 )
             }
             findNavController().navigate(R.id.action_addPostFragment_to_listFragment)
+            sendNotification()
         }
 
         // imageview clickListener to upload photo from device itself
@@ -109,6 +117,17 @@ class AddPostFragment : Fragment() {
 
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        imageUploadProgressBar.visibility = View.VISIBLE
+        if(resultCode== Activity.RESULT_OK && requestCode ==0){
+            uri = data?.data!! //this data refer to data of our intent
+
+            image.setImageURI(uri)
+            uploadImage(uri)
+        }
     }
 
 
@@ -158,14 +177,33 @@ class AddPostFragment : Fragment() {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        imageUploadProgressBar.visibility = View.VISIBLE
-        if(resultCode== Activity.RESULT_OK && requestCode ==0){
-            uri = data?.data!! //this data refer to data of our intent
+    private fun createNotificationChannel(){
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            val name = "New Item Posted"
+            val descriptionText = "A new item will available soon"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
 
-            image.setImageURI(uri)
-            uploadImage(uri)
+            val channel = NotificationChannel(NOTIFICATION_CHANNEL_ID,name,importance).apply {
+                description = descriptionText
+            }
+            val notificationManager : NotificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
     }
+
+    private  fun sendNotification(){
+        val builder = context?.let {
+            NotificationCompat.Builder(it,NOTIFICATION_CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_logo_round)
+                .setContentTitle("New Item Posted")
+                .setContentText("A new item will available soon")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        }
+        with(context?.let { NotificationManagerCompat.from(it) }){
+            if (builder != null) {
+                this?.notify(notificationId, builder.build())
+            }
+        }
+    }
+
 }
