@@ -27,8 +27,7 @@ class MyAddsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             listOfItemList = it.getStringArrayList("id")!!
-            Log.d("MyAddFragment" , "Item list Received  : $listOfItemList")
-            //listofItemList.clear()
+            Log.d("MyAddsFragment" , "Item list Received  : $listOfItemList")
         }
     }
 
@@ -55,7 +54,7 @@ class MyAddsFragment : Fragment() {
         val ref = FirebaseDatabase.getInstance().getReference("AddDetails").child("Details")
         ref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot){
-                Log.d("AdFragment", "Got : ${snapshot.value}")
+                Log.d("myAddsFragment", "Get snapshot value : ${snapshot.value}")
 
                 if(snapshot.exists()){
                     adItemList.clear()

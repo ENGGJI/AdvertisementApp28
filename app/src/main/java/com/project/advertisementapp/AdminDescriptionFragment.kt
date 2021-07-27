@@ -41,9 +41,9 @@ class AdminDescriptionFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             gotItemId = it.getString("itemId")!!
-            Log.d("AdminDescriptionFrag","itemId : $gotItemId")
+            Log.d("AdminDescriptionFrag","Current itemId : $gotItemId")
             gotUserId = it.getString("userId")!!
-            Log.d("AdminDescriptionFrag","userId : $gotUserId")
+            Log.d("AdminDescriptionFrag","Current userId : $gotUserId")
         }
     }
 
@@ -89,7 +89,7 @@ class AdminDescriptionFragment : Fragment() {
                         if (item != null) {
                             itemList.add(item)
                         }
-                        Log.d("AdminDescriptionFrag","itemId from advertisedata : ${item?.itemId}")
+                        Log.d("AdminDescriptionFrag","ItemId fetched advertised data : ${item?.itemId}")
                         if(item?.itemId == gotItemId ){
                             val imageUrl = item.itemImageUrl
                             Glide.with(this@AdminDescriptionFragment).load(imageUrl).into(itemImageUrl)

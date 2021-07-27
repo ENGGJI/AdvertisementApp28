@@ -126,9 +126,9 @@ class UpdateItemFragment : Fragment() {
     private fun uploadImage(uri: Uri?) {
 
         val auth = auth.currentUser.toString()
-        Log.d("AddPostFragment","username : $auth")
+        Log.d("UpdateItemFragment","Current user : $auth")
         imageName = uri?.lastPathSegment?.removePrefix("raw:/storage/emulated/0/Download/").toString()
-        Log.d("AddFragment","imageName : $imageName")
+        Log.d("UpdateItemFragment","Image Name fetched : $imageName")
 
         val storageReference = FirebaseStorage.getInstance().reference.child("image/$imageName")
 
@@ -137,14 +137,14 @@ class UpdateItemFragment : Fragment() {
                 .addOnSuccessListener {
                     it.metadata?.reference?.downloadUrl?.addOnSuccessListener {
                         imageUrl = it.toString()
-                        Log.d("AddFragment","imageUrl: $imageUrl")
+                        Log.d("UpdateItemFragment","ImageUrl generated: $imageUrl")
                     }
                     imageUploadProgressBar.visibility = View.INVISIBLE
                     button.visibility = View.VISIBLE
                     Glide.with(this).load(uri).into(image)
                     Toast.makeText(context,"Your post has been sent to admin for approval",Toast.LENGTH_LONG).show()
                 }.addOnFailureListener{
-                    Toast.makeText(context,"Image Upload failed",Toast.LENGTH_LONG).show()
+                    Toast.makeText(context,"Image upload failed",Toast.LENGTH_LONG).show()
                 }
         }
     }
@@ -164,9 +164,6 @@ class UpdateItemFragment : Fragment() {
 
         val addRef = db.getReference("AddDetails")
         addRef.child("Details").child(itemId).setValue(advertisementDetails)
-
-        val userRef = db.getReference("UserData")
-        userRef.child("${auth.currentUser?.uid}").child("itemPosted").child(itemId).child("itemId").setValue(itemId)
 
         val itemRef = db.getReference("ItemData")
         itemRef.child(itemId).setValue(itemDetails)

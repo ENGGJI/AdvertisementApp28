@@ -27,9 +27,9 @@ class AdminAdapter(private val itemList : ArrayList<AdvertiseData>):
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val currentItem = itemList[position]
-        Log.d("AdminAdapter", "Got : ${currentItem.itemImageUrl}")
+        Log.d("AdminAdapter", "Get current image : ${currentItem.itemImageUrl}")
         val imageUrl = "${currentItem.itemImageUrl}"
-        Log.d("AdminAdapter","imgUrl :$imageUrl")
+        Log.d("AdminAdapter","ImgUrl Fetched :$imageUrl")
         Glide.with(holder.itemView.context).load(imageUrl).into(holder.itemImageA)
 
         with(holder.itemView){

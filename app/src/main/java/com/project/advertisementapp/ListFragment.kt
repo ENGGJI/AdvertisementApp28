@@ -84,13 +84,11 @@ class ListFragment : Fragment() {
                 Log.d("UserActivity", "enterText is $newText")
                 newTextInSearchBar = newText!!
                 if (flag == 1) {
-                    Log.d("Iamstupid" , " REached till here True searchHotelArrayList , ${searchItemArrayList.size}")
                     getAdData()
                 }
                 else if(newTextInSearchBar.length > 2){
                     flag = 1
                     getAdData()
-                    Log.d("Iamstupid" , " REached till here True searchHotelArrayList , ${newTextInSearchBar}")
                 }
                 return false
             }
@@ -105,7 +103,7 @@ class ListFragment : Fragment() {
 
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    Log.d("ListFragment", "Got : ${snapshot.value}")
+                    Log.d("ListFragment", "Get snapshot value : ${snapshot.value}")
                     if(snapshot.exists()){
                         itemArrayList.clear()
                         for(itemSnapshot in snapshot.children){
@@ -116,7 +114,7 @@ class ListFragment : Fragment() {
                                 listForItemID.add(item.itemId!!)
                             }
                         }
-                        Log.d("ListFragment", "Getting the List Item ID's : $listForItemID")
+                        Log.d("ListFragment", "Getting the list of item id's : $listForItemID")
                     }
                 }
 
@@ -138,14 +136,13 @@ class ListFragment : Fragment() {
         val ref = FirebaseDatabase.getInstance().getReference("AddDetails").child("Details")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("ListFragment", "Got : ${snapshot.value}")
+                Log.d("ListFragment", "Getting snapshot : ${snapshot.value}")
                 if(snapshot.exists()){
                     for(itemSnapshot in snapshot.children){
                         val allUserItems = itemSnapshot.getValue(AdvertiseData::class.java)
                         if("${allUserItems?.itemName}".lowercase().contains(newTextInSearchBar.toLowerCase()) && allUserItems?.verified == "Verified"){
                             Log.d("ListFragment abc","${allUserItems.itemName.toString()}, $newTextInSearchBar")
                             searchItemArrayList.add(allUserItems)
-                            Log.d("Iamstupid" , " REached till here True searchHotelArrayList , $searchItemArrayList")
                         }
                         else{
                             if(allUserItems?.verified == "Verified"){

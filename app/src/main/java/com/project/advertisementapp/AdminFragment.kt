@@ -71,7 +71,7 @@ class AdminFragment : Fragment() {
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("Admin fragment", "Got : ${snapshot.value}")
+                Log.d("Admin fragment", "Get snapshot value : ${snapshot.value}")
                 if(snapshot.exists()){
                     itemArrayList.clear()
                     for(itemSnapshot in snapshot.children){

@@ -38,9 +38,9 @@ class ListAdapter(private val itemList: ArrayList<AdvertiseData>):
             it.findNavController().navigate(R.id.action_listFragment_to_detailsFragment,selectedItemIdBundle)
         }
 
-        Log.d("ListAdapter", "Got : ${currentItem.itemImageUrl}")
+        Log.d("ListAdapter", "Get Current User : ${currentItem.itemImageUrl}")
         val imageUrl = "${currentItem.itemImageUrl}"
-        Log.d("ListAdapter","imgUrl :$imageUrl")
+        Log.d("ListAdapter","Current imgUrl fetched : $imageUrl")
         Glide.with(holder.itemView.context).load(imageUrl).into(holder.itemImage)
 
         holder.itemName.text = currentItem.itemName

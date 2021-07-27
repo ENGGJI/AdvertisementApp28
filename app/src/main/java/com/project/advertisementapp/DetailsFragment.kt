@@ -51,9 +51,9 @@ class DetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             gotItemId = it.getString("itemId")!!
-            Log.d("DetailsFragment","itemId : $gotItemId")
+            Log.d("DetailsFragment","Current itemId fetched : $gotItemId")
             gotUserId = it.getString("userId")!!
-            Log.d("DetailsFragment","userId : $gotUserId")
+            Log.d("DetailsFragment","Current userId fetched : $gotUserId")
         }
     }
 
@@ -87,7 +87,7 @@ class DetailsFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     subCount = snapshot.childrenCount.toInt()
-                    Log.d("Details Fragment", "subcount : $subCount")
+                    Log.d("Details Fragment", "SubCount value : $subCount")
                 }
             }
 
@@ -114,14 +114,14 @@ class DetailsFragment : Fragment() {
                                 for (userAd in snapshot.children){
                                     if (userAd.key == auth.currentUser?.uid.toString()) {
                                         for (i in 1..(subCount+1)) {
-                                            Log.d("SubscriberFragmentsub", snapshot.child(auth.currentUser?.uid.toString()).child(i.toString()).child("subscriberUserID").value.toString())
+                                            Log.d("DetailsFragment", snapshot.child(auth.currentUser?.uid.toString()).child(i.toString()).child("subscriberUserID").value.toString())
                                             val subbedUserId = subRef.child(auth.currentUser?.uid.toString()).child(i.toString())
                                             subbedUserId.addValueEventListener(object : ValueEventListener {
                                                 override fun onDataChange(snapshot: DataSnapshot) {
                                                     if (snapshot.exists()) {
                                                         for (user in snapshot.children) {
                                                             userSubbedList.add(snapshot.child("subscriberID").value.toString())
-                                                            Log.d("Subscrrier", userSubbedList.toString())
+                                                            Log.d("DetailsFragment", "Subscriber List : $userSubbedList")
                                                         }
                                                     }
                                                 }
@@ -165,7 +165,7 @@ class DetailsFragment : Fragment() {
                         if (item != null) {
                             itemList.add(item)
                         }
-                        Log.d("Details Fragment","itemId from advertisedata : ${item?.itemId}")
+                        Log.d("DetailsFragment","ItemId from advertised data : ${item?.itemId}")
                         if(item?.itemId == gotItemId ){
                             val imageUrl = item.itemImageUrl
                             context?.let { Glide.with(it).load(imageUrl).into(itemImageUrl) }

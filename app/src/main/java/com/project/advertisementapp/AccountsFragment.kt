@@ -74,7 +74,7 @@ class AccountsFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         subCount = snapshot.childrenCount.toInt()
-                        Log.d("Details Fragment", "subcount : $subCount")
+                        Log.d("Details Fragment", "subCount : $subCount")
                     }
                 }
 
@@ -89,14 +89,14 @@ class AccountsFragment : Fragment() {
                         for (userAd in snapshot.children){
                             if (userAd.key == auth.currentUser?.uid) {
                                 for (i in 1..(subCount+1)) {
-                                    Log.d("SubscriberFragmentsub", snapshot.child(auth.currentUser?.uid.toString()).child(i.toString()).child("subscriberUserID").value.toString())
+                                    Log.d("AccountsFragment", snapshot.child(auth.currentUser?.uid.toString()).child(i.toString()).child("subscriberUserID").value.toString())
                                     val subbedUserId = subRef.child(auth.currentUser?.uid.toString()).child(i.toString())
                                     subbedUserId.addValueEventListener(object : ValueEventListener {
                                         override fun onDataChange(snapshot: DataSnapshot) {
                                             if (snapshot.exists()) {
                                                 for (user in snapshot.children) {
                                                     userSubbedList.add(snapshot.child("subscriberID").value.toString())
-                                                    Log.d("Subscrrier", userSubbedList.toString())
+                                                    Log.d("AccountsFragment","SubscriberList $userSubbedList")
                                                 }
                                             }
                                         }

@@ -59,7 +59,7 @@ class MyAdAdapter(private val myAdList : ArrayList<AdvertiseData>) :
             }
         }
 
-        Log.d("ListAdapter", "Got : ${adCurrentItem.itemImageUrl}")
+        Log.d("MyAdAdapter", "Get current item image url : ${adCurrentItem.itemImageUrl}")
         val imageUrl = "${adCurrentItem.itemImageUrl}"
         Glide.with(holder.itemView.context).load(imageUrl).into(holder.adImages)
 

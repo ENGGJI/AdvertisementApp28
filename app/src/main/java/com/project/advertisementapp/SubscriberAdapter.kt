@@ -44,7 +44,7 @@ class SubscriberAdapter(private val itemList : ArrayList<UserData>) :
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.exists()) {
                             subCount = snapshot.childrenCount.toInt()
-                            Log.d("Details Fragment", "subcount : $subCount")
+                            Log.d("SubscriberAdapter", "SubCount : $subCount")
                         }
                     }
 

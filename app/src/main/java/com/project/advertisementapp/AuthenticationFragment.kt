@@ -74,7 +74,7 @@ class AuthenticationFragment : Fragment() {
             val password = passwordEditText.text.toString()
             if(email.isEmpty() && password.isEmpty()) {
                 Toast.makeText(context,"Please enter all fields", Toast.LENGTH_LONG).show()
-                Log.d("AuthActivity","LoginClicked")
+                Log.d("AuthActivity","LoginClicked button check")
             }
             else{
                 signIn(email,password)
@@ -86,7 +86,7 @@ class AuthenticationFragment : Fragment() {
     private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{ task ->
             if(task.isSuccessful){
-                Log.d("AuthActivity","Sign In complete")
+                Log.d("AuthActivity","Sign in complete")
                 Toast.makeText(context, "Authentication Successful",
                     Toast.LENGTH_SHORT).show()
                 if(email=="test@gmail.com" && password =="123456"){

@@ -83,11 +83,11 @@ class RegistrationFragment : Fragment() {
         }
         else if(password != password2){
             Toast.makeText(context,"Password Mismatch, Try Re-entering the password",Toast.LENGTH_LONG).show()
-            Log.d("RegisterActivity","Registration Failed - Try again")
+            Log.d("RegistrationFragment","Registration Failed - Try again")
         }
         else{
             Toast.makeText(context,"Please enter all fields",Toast.LENGTH_LONG).show()
-            Log.d("RegisterActivity","Registration Failed - email and password empty")
+            Log.d("RegistrationFragment","Registration Failed - email and password empty")
         }
     }
 
@@ -95,7 +95,7 @@ class RegistrationFragment : Fragment() {
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener() {task ->
             if(task.isSuccessful){
-                Log.d("MainActivity","Created New User $email")
+                Log.d("RegistrationFragment","Created New User $email")
                 Toast.makeText(context, "Account Creation Successful",
                     Toast.LENGTH_SHORT).show()
 
@@ -108,7 +108,7 @@ class RegistrationFragment : Fragment() {
                 findNavController().navigate(R.id.action_registrationFragment_to_authenticationFragment)
             }
             else{
-                Log.d("MainActivity", "Account creation failed", task.exception)
+                Log.d("RegistrationFragment", "Account creation failed", task.exception)
                 Toast.makeText(context, "Already a User",
                     Toast.LENGTH_SHORT).show()
             }

@@ -71,7 +71,7 @@ class AddPostFragment : Fragment() {
         auth = Firebase.auth
 
         // button onclick to upload the data on firebase
-        button =view.findViewById<Button>(R.id.submitB)
+        button =view.findViewById(R.id.submitB)
 
         // item details to be uploaded -- in the orderly manner
         itemNameEditText = view.findViewById(R.id.itemNameE)
@@ -83,7 +83,7 @@ class AddPostFragment : Fragment() {
         imageUploadProgressBar.visibility = View.INVISIBLE
         button.visibility = View.INVISIBLE
 
-        image = view.findViewById<ImageView>(R.id.ivPhoto)
+        image = view.findViewById(R.id.ivPhoto)
 
         button.setOnClickListener{
 
@@ -114,9 +114,9 @@ class AddPostFragment : Fragment() {
 
     private fun uploadImage(uri: Uri?) {
         val auth = auth.currentUser.toString()
-        Log.d("AddPostFragment","username : $auth")
+        Log.d("AddPostFragment","CurrentUser : $auth")
         imageName = uri?.lastPathSegment?.removePrefix("raw:/storage/emulated/0/Download/").toString()
-        Log.d("AddFragment","imageName : $imageName")
+        Log.d("AddFragment","Image name to be uploaded in firebase storage database : $imageName")
         val storageReference = FirebaseStorage.getInstance().reference.child("image/$imageName")
 
         if (uri != null) {
@@ -124,7 +124,7 @@ class AddPostFragment : Fragment() {
                 .addOnSuccessListener {
                     it.metadata?.reference?.downloadUrl?.addOnSuccessListener {
                         imageUrl = it.toString()
-                        Log.d("AddFragment","imageUrl: $imageUrl")
+                        Log.d("AddFragment","ImageUrl generated: $imageUrl")
                     }
                     imageUploadProgressBar.visibility = View.INVISIBLE
                     button.visibility = View.VISIBLE
